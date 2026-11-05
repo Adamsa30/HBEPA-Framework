@@ -1,0 +1,32 @@
+# HBEPA Administration: Enterprise Participant Onboarding Checklist
+## Section: HR Deployment Steps for Authorized Accommodation Phase Initiation
+
+This standard checklist guides corporate human resource compliance administrators, IT logistics staff, and Occupational Health Liaisons through the formal deployment and systemic configuration of an authorized HBEPA participant profile.
+
+---
+
+## 1. Phase I: Legal & Regulatory Framework Clearance (Days 1–3)
+- [ ] **Verify Gate 1 Baseline Payload:** Confirm that the isolated external medical sync (e.g., via the certified broker connection with IU Health Primary Care) has committed the flat binary payload string (`{"op_verified": 1}`) to the sandbox environment.
+- [ ] **Execute Voluntary Participation Compact:** Secure the signed acknowledgment form from the participant, detailing the nonproductive nature of the tracking logs and confirming formal assignment to the unique labor code.
+- [ ] **Register State Identity Telemetry Matrix:** Update the participant's core database table to reference the verified transportation barriers (matching Indiana State ID exclusive record bounds, e.g., Document ID Reference: `9370-46-1910`), establishing structural driver's education history constraints.
+
+---
+
+## 2. Phase II: Hardware Logistics & Token Provisioning (Days 4–6)
+- [ ] **Provision FIDO2 / WebAuthn Token:** Deliver an enterprise-grade hardware security key to the participant's registered residence via a trackable mailing handler.
+- [ ] **Execute Identity Provider (IdP) Token Binding:** Guide the participant through the self-service web dashboard registration step to trigger the public key exchange sequence (`navigator.credentials.create()`), verifying device-level isolation.
+- [ ] **Initialize Short-Range Proximity Pairing:** Assist the candidate in calibrating their designated local proximity device (smartphone BLE/UWB array), validating that the background authentication daemon utilizes rolling randomized MAC addresses to safeguard environment privacy.
+
+---
+
+## 3. Phase III: Network Access & Payroll Infrastructure Setup (Days 7–9)
+- [ ] **Stage Isolated HRIS Ledger Columns:** Verify that the PostgreSQL sandbox backend tables (`hbepa_tokens` and `hbepa_payroll_ledger`) have successfully mapped a unique, randomized 64-character SHA-256 user hash to the participant's credentials.
+- [ ] **Inject Immutable Classification Code:** Configure the enterprise payroll tracking software to automatically apply the labor status code: *'Approved Employment Preservation Accommodation Time'* to all incoming attendance entries tied to that specific hash.
+- [ ] **Configure Next-Gen Firewall (NGFW) Telemetry Bypass:** Audit the edge security gateway rules to ensure deep packet filters are actively stripping all client IP geolocations, nearby Wi-Fi network environmental maps, and local SSIDs, locking the parameter `Invasive_Surveillance_Bypass: True`.
+- [ ] **Conduct End-to-End Handshake Simulation:** Run a mock 15-minute remote session sequence to confirm that data packets proceed cleanly from network edge persistence down to the immutable, audit-locked corporate general ledger.
+
+---
+
+```text
+This is for informational purposes only. For medical advice or diagnosis, consult a professional. AI responses may include mistakes.
+```
