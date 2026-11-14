@@ -40,11 +40,11 @@ def test_verify_privacy_by_design_hash_insertion(cursor):
     
     # 1. Insert a mock anonymized handshake token block
     cursor.execute(
-        \"\"\"
+        
         INSERT INTO hbepa_tokens (anonymized_user_hash, ephemeral_handshake_token, expires_at, token_status)
         VALUES (%s, %s, %s, 'PENDING')
         RETURNING token_id;
-        \"\"\",
+        ,
         (test_hash, test_token, expiration_date)
     )
     token_record = cursor.fetchone()
@@ -59,11 +59,11 @@ def test_enforce_labor_code_isolation_default(cursor):
     
     # 2. Insert attendance entry omitting the labor code parameter to check table default string
     cursor.execute(
-        \"\"\"
+        
         INSERT INTO hbepa_payroll_ledger (anonymized_user_hash, pay_period_start, pay_period_end, session_persistence_hours)
         VALUES (%s, %s, %s, 40.00)
         RETURNING entry_id, labor_code;
-        \"\"\",
+        ,
         (test_hash, start_date, end_date)
     )
     ledger_record = cursor.fetchone()
@@ -78,10 +78,10 @@ def test_verify_negative_session_hours_check_constraint(cursor):
     # 3. Force catch an exception when violating the numerical range rule
     with pytest.raises(psycopg2.errors.CheckViolation):
         cursor.execute(
-            \"\"\"
+            
             INSERT INTO hbepa_payroll_ledger (anonymized_user_hash, pay_period_start, pay_period_end, session_persistence_hours)
             VALUES (%s, %s, %s, -8.50);
-            \"\"\",
+            ,
             (test_hash, start_date, end_date)
         )
 
@@ -93,22 +93,22 @@ def test_audit_immutability_rules_prevent_retrospective_tampering(cursor):
     
     # 4. Insert an active, baseline row that defaults to auto-locked for audit
     cursor.execute(
-        \"\"\"
+        
         INSERT INTO hbepa_payroll_ledger (anonymized_user_hash, pay_period_start, pay_period_end, session_persistence_hours, is_locked_for_audit)
         VALUES (%s, %s, %s, 35.50, TRUE)
         RETURNING entry_id;
-        \"\"\",
+        ,
         (test_hash, start_date, end_date)
     )
     entry_id = cursor.fetchone()['entry_id']
     
     # 5. Attempt a retrospective modification to update tracking hours
     cursor.execute(
-        \"\"\"
+        
         UPDATE hbepa_payroll_ledger 
         SET session_persistence_hours = 50.00 
         WHERE entry_id = %s;
-        \"\"\",
+        ,
         (entry_id,)
     )
     
@@ -122,11 +122,11 @@ def test_audit_immutability_rules_prevent_deletion(cursor):
     start_date = datetime.date.today()
     
     cursor.execute(
-        \"\"\"
+        
         INSERT INTO hbepa_payroll_ledger (anonymized_user_hash, pay_period_start, pay_period_end, session_persistence_hours)
         VALUES (%s, %s, %s, 8.00)
         RETURNING entry_id;
-        \"\"\",
+        ,
         (test_hash, start_date, start_date)
     )
     entry_id = cursor.fetchone()['entry_id']
