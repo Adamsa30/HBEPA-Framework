@@ -1,6 +1,6 @@
 # Home-Based Employment Preservation Accommodation (HBEPA)
 
-[![DOI](https://shields.io)](https://doi.org)
+https://zenodo.org/records/24278485
 
 A Proposed Model Reference Architecture for Inclusive Workforce Retention
 
